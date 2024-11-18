@@ -1,0 +1,10 @@
+# *
+User-agent: *
+#Allow: /
+Disallow : /npm/@clerk/clerk-js@5/dist/clerk.browser.js
+
+# Host
+Host: https://opremime.si
+
+# Sitemaps
+Sitemap: https://opremime.si/sitemap.xml
