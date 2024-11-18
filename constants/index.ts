@@ -83,14 +83,14 @@ export const TOOLS = [
 
 export const ROUTES = [
   {
-    label: 'Začetna stran',
+    label: 'Početna stranica',
     icon: LayoutDashboard,
     href: '/dashboard',
     color: 'text-sky-500',
   },
   ...TOOLS,
   {
-    label: 'Nastavitve',
+    label: 'Postavke',
     icon: Settings,
     href: '/settings',
     color: null,
