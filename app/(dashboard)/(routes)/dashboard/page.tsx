@@ -15,10 +15,10 @@ const DashboardPage = () => {
     <div>
       <div className="mb-8 space-y-4">
         <h2 className="text-2xl md:text-4xl font-bold text-center">
-        Opremi Svoj Sanjski Dom
+        Opremite svoj dom iz snova
         </h2>
         <p className="text-muted-foreground font-light text-sm md:text-lg text-center">
-        Pretvorite svoje oblikovalske zamisli v elegantno, profesionalno notranjost z našo umetno inteligenco.
+        Pretvorite svoje dizajnerske ideje u elegantne, profesionalne interijere uz našu umjetnu inteligenciju.
         </p>
       </div>
 

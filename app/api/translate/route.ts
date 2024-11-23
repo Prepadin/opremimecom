@@ -8,7 +8,7 @@ export async function  POST(req: NextRequest) {
             method: "POST",
             body: JSON.stringify({
                 q: body.q,
-                source: "sl",
+                source: "sr",
                 target: "en",
                 format: "text",
                 api_key: ""  // Make sure to replace this with the actual API key
