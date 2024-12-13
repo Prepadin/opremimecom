@@ -145,7 +145,7 @@ export default function ImagePage() {
       // Step 3: Generate the image with the translated prompt
       setLoading(true);
       const imageResponse = await axios.post(
-        `https://e294-46-122-68-255.ngrok-free.app/generate_design/?prompt=${translatedPrompt}`,
+       `https://0643-46-122-68-255.ngrok-free.app/generate_design/?prompt=${translatedPrompt}`,
         formData,
         {
           headers: {
