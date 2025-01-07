@@ -12,7 +12,7 @@ const LandingPage = () => (
     <LandingHero />
     <LandingAfter />
     <LandingPricing />
-    {/* <LandingContent /> */}
+    <LandingContent />
     {/* <LandingFooter /> */}
     <LandingFooters />
   </div>

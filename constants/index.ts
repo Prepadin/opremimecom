@@ -15,31 +15,31 @@ export const MAX_FREE_COUNTS = 10 as const
 
 export const TESTIMONIALS = [
   {
-    name: 'Tomaž Hribar',
+    name: 'Milan Nikolic',
     image: '/users/james-barr.png',
-    title: 'Specialist za marketing',
+    title: 'Specijalista za marketing',
     description:
-      'Ta aplikacija je sprememba igre! Naložil sem fotografijo svoje dnevne sobe in v nekaj sekundah mi je ponudila več možnosti oblikovanja. Umetna inteligenca je popolnoma razumela moj slog in poskrbela, da je soba delovala sveže in moderno brez kakršnih koli težav. Priporočam!',
+      'Ova aplikacija menja igru! Otpremio sam fotografiju svoje dnevne sobe i za nekoliko sekundi mi je dala nekoliko opcija dizajna. AI je u potpunosti razumeo moj stil i učinio da se soba oseća svežom i modernom bez ikakvih problema',
   },
   {
-    name: 'Eva Koren',
+    name: 'Ivana Petrovic',
     image: '/users/brock-wegner.png',
-    title: 'Študent',
+    title: 'Student',
     description:
-      'To orodje mi je naravnost všeč! Nisem dobera v notranjem oblikovanju, toda ta aplikacija mi je to tako olajšala. Pravkar sem naložila sliko svoje spalnice in umetna inteligenca je predlagala osupljive modele, ki se jih sama nikoli ne bi spomnila. Neverjetni rezultati!',
+      'Apsolutno volim ovaj alat! Nisam dobar u dizajnu enterijera, ali ova aplikacija mi je to tako olakšala. Upravo sam postavio sliku svoje spavaće sobe i veštačka inteligencija je predložila neverovatne dizajne kojih se sam nikada ne bih setio. Neverovatni rezultati!',
   },
   {
-    name: 'Miha Zupan',
+    name: 'Zoran Nikolic',
     image: '/users/samuel-raita.png',
-    title: 'Podjetnik',
+    title: 'Preduzetnik',
     description:
-      'Generator oblikovanja AI me je navdušil! V nekaj minutah sem si lahko ogledal različne sloge pohištva za svoje novo stanovanje. Je izjemno prijazen uporabniku in daje rezultate na profesionalni ravni.',
+      'Generator AI dizajna me je oduševio! U roku od nekoliko minuta, mogao sam da vidim različite stilove nameštaja za moj novi stan. Izuzetno je lak za upotrebu i daje rezultate na profesionalnom nivou.',
   },
   {
-    name: 'Špela Vidmar',
+    name: 'Mirjana Popovic',
     image: '/users/evan-wise.png',
-    title: 'Grafični oblikovalec',
-    description: 'Ta aplikacija mi je prihranila toliko časa in denarja. Nisem bila prepričana, kako preoblikovati svoj prostor, vendar mi je umetna inteligenca dala fantastične ideje, ki so popolnoma ustrezale mojemu okusu. Postopek je potekal gladko, rezultati pa neverjetni!',
+    title: 'Grafički dizajner',
+    description: 'Ova aplikacija mi je uštedela mnogo vremena i novca. Nisam bio siguran kako da transformišem svoj prostor, ali AI mi je dao fantastične ideje koje su savršeno odgovarale mom ukusu. Proces je bio gladak, a rezultati su bili neverovatni!',
   },
 ] as const
 
