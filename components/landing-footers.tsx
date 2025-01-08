@@ -39,10 +39,10 @@ export const LandingFooters = () => {
             </ul>
           </div> */}
 
-          {/* <div className="space-y-4">
+          <div className="space-y-4">
             <h3 className="font-medium text-white">Links</h3>
             <ul className="space-y-2 text-sm">
-              <li>
+              {/* <li>
                 <Link href="#" className="text-muted-foreground hover:text-foreground">
                   Pricing
                 </Link>
@@ -56,7 +56,7 @@ export const LandingFooters = () => {
                 <Link href="#" className="text-muted-foreground hover:text-foreground">
                   Billing & Invoices
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link href="#" className="text-muted-foreground hover:text-foreground">
                   Terms of Service
@@ -68,7 +68,7 @@ export const LandingFooters = () => {
                 </Link>
               </li>
             </ul>
-          </div> */}
+          </div>
 
           <div className="space-y-4">
             <h3 className="font-medium text-white">Kontakt</h3>
