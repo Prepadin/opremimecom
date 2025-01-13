@@ -166,11 +166,11 @@ export const LandingAfter = () => {
   useEffect(() => {
     const intervalImages = setInterval(() => {
       setCurrentIndexImages((prevIndex) => (prevIndex + 1) % images.length)
-    }, 4000) // Slower interval for `images`
+    }, 8000) // Slower interval for `images`
 
     const intervalImages1 = setInterval(() => {
       setCurrentIndexImages1((prevIndex) => (prevIndex + 1) % images1.length)
-    }, 1000) // Faster interval for `images1`
+    }, 2000) // Faster interval for `images1`
 
     return () => {
       clearInterval(intervalImages)
