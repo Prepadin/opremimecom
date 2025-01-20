@@ -13,7 +13,7 @@ const AuthLayout = ({ children }: PropsWithChildren) => (
       <div className="relative w-8 h-8 mr-4">
         <Image src="/logo1.png" alt="Opremi Me logo" fill />
       </div>
-      <h1 className={cn('text-2xl font-bold', montserrat.className)}>Opremi Me</h1>
+      <h1 className={cn('text-2xl font-bold', montserrat.className)}>Opremi Se</h1>
     </Link>
     {children}
   </div>
