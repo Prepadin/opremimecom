@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 
 export const siteConfig: Metadata = {
-  title: 'OPREMI ME: Umjetno inteligentni dizajner prostorija',
-  description: 'Dizajnirajte svoj dom iz snova. Pretvorite svoje ideje u profesionalne dizajne interijera pomoću našeg AI softvera jednostavnog za korištenje.',
+  title: 'OPREMI ME: Dizajner soba sa veštačkom inteligencijom',
+  description: 'Otpremite slike svoje sobe i izaberite režim i stil koji želite. Veštačka inteligencija će generisati personalizovane ideje za dizajn na osnovu vaših unosa.',
   keywords: [
     'sobni oblikovalec',
     'umetna inteligenca',
@@ -10,7 +10,7 @@ export const siteConfig: Metadata = {
     'dezajn',
     'oblikuj',
     'notranji prostori',
-  ] as Array<string>,
+  ] ,
   authors: {
     name: 'Prepad d.o.o.',
     url: 'https://prepad.si',
