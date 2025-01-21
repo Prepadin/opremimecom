@@ -11,8 +11,5 @@ export const siteConfig: Metadata = {
     'oblikuj',
     'notranji prostori',
   ] ,
-  authors: {
-    name: 'Prepad d.o.o.',
-    url: 'https://prepad.si',
-  },
-} as const
+   authors: [ {name: 'Prepad d.o.o.', url: 'https://prepad.si' } ] 
+}
