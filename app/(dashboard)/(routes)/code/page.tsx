@@ -14,13 +14,13 @@ export default function ContactPage() {
       <h1 className="text-3xl font-bold mb-6 text-center">Kontaktirajte nas</h1>
       <Card>
         <CardHeader>
-          <CardTitle>Stopite v stik</CardTitle>
+          <CardTitle>Javite se</CardTitle>
         </CardHeader>
         <CardContent className="grid gap-6">
           <div className="flex items-center space-x-4">
             <Mail className="h-6 w-6 text-gray-400" />
             <div>
-              <h3 className="text-lg font-semibold">Elektronski naslov</h3>
+              <h3 className="text-lg font-semibold">Adresa e-pošte</h3>
               <p className="text-gray-600">info@opremime.si</p>
             </div>
           </div>
