@@ -1,5 +1,5 @@
 'use client'
-
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation'
 import { ArrowRight } from 'lucide-react'
 
@@ -7,6 +7,9 @@ import { Card } from '@/components/ui/card'
 
 import { TOOLS } from '@/constants'
 import { cn } from '@/lib/utils'
+
+const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
+import animationData from '@/public/assets/house1.json';
 
 const DashboardPage = () => {
   const router = useRouter()
@@ -40,6 +43,9 @@ const DashboardPage = () => {
             <ArrowRight className="w-5 h-5" />
           </Card>
         ))}
+        <div className="flex justify-center items-center">
+          <Lottie style={{ width: '50%', height: '50%' }} animationData={animationData} />
+        </div>
       </div>
     </div>
   )
