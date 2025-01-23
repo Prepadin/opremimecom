@@ -1,4 +1,4 @@
-import { BeforeAfterSlider } from "@/components/before-after-slider"
+
 import { Button } from "@/components/ui/button"
 import Image from "next/image";
 
@@ -27,7 +27,7 @@ export const LandingTutos = () => {
              <div className="aspect-[4/3] w-full relative overflow-hidden"  >
           <Image
             src="/roomgo.png"
-            width={500}
+            width={400}
             height={200}
             alt="Before redesign"
             className="object-cover"
