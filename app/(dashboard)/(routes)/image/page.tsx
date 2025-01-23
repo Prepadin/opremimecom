@@ -27,10 +27,10 @@ export default function ImagePage() {
   const [preview, setPreview] = useState<string | null>(null)
 
   const rooms: RoomDescription[] = [
-    {
-      image: "/bed.jpg?height=50&width=50",
-      description: "Elegantno namještena Art Deco spavaća soba s king size krevetom s geometrijskom posteljinom, raskošnom foteljom od baršuna i noćnim ormarićem s ogledalom koji odražava raskoš sobe. Art Deco inspirirana umjetnička djela dodaju dašak glamura"
-    },
+    // {
+    //   image: "/bed.jpg?height=50&width=50",
+    //   description: "Elegantno namještena Art Deco spavaća soba s king size krevetom s geometrijskom posteljinom, raskošnom foteljom od baršuna i noćnim ormarićem s ogledalom koji odražava raskoš sobe. Art Deco inspirirana umjetnička djela dodaju dašak glamura"
+    // },
     {
       image: "/bedroom_2.jpg?height=50&width=100",
       description: "Spavaća soba koja odiše francuskim seoskim šarmom s mekim tapeciranim krevetom, zidovima ukrašenim tapetama s cvjetnim motivima i vintage drvenim ormarom."
@@ -146,7 +146,7 @@ export default function ImagePage() {
       // Step 3: Generate the image with the translated prompt
       setLoading(true);
       const imageResponse = await axios.post(
-       `https://80ba-46-122-68-255.ngrok-free.app/generate_design/?prompt=${translatedPrompt}`,
+       `https://77ee-46-122-68-255.ngrok-free.app/generate_design/?prompt=${translatedPrompt}`,
         formData,
         {
           headers: {
