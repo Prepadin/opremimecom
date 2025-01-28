@@ -4,7 +4,7 @@ export async function  POST(req: NextRequest) {
     try {
         const body = await req.json();
 
-        const response = await fetch("https://a1dc-46-122-68-255.ngrok-free.app/translate", {
+        const response = await fetch("https://d603-46-122-68-255.ngrok-free.app/translate", {
             method: "POST",
             body: JSON.stringify({
                 q: body.q,
