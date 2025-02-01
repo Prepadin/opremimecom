@@ -17,6 +17,28 @@ interface RoomDescription {
 
 
 export default function ImagePage() {
+  
+  const [loadingnow, updateLoadingStatus] = useState(false); // Renamed setLoading to updateLoadingStatus
+  const [progress, setProgress] = useState(0);
+
+  const handleClick = () => {
+    updateLoadingStatus(true); // Use the new name here
+    setProgress(0);
+
+    const interval = setInterval(() => {
+      setProgress((prevProgress) => {
+        if (prevProgress >= 100) {
+          clearInterval(interval);
+          updateLoadingStatus(false); // Use the new name here
+          return 100;
+        }
+        return prevProgress + 100 / 25; // Increment progress every second
+      });
+    }, 1000); // Update every second
+  };
+  
+  
+  
   const [file, setFile] = useState<File | null>(null)
   const [prompt, setPrompt] = useState<string>("");
   const [selectedImage, setSelectedImage] = useState<File | null>(null);
@@ -335,15 +357,16 @@ return (
               />
             </div>
           )}
-          <button
-            type="submit"
-            disabled={loading}
-            className={`mt-4 px-6 py-3 bg-blue-600 text-white rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-              loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-700'
-            }`}
-          >
-            {loading ? 'Generiranje, pričekajte ...' : 'Generirati'}
-          </button>
+               <button
+      type="submit"
+      disabled={loading}
+      onClick={handleClick}
+      className={`mt-4 px-6 py-3 bg-blue-600 text-white rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
+        loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-700'
+      }`}
+    >
+      {loadingnow ? `Generiranje, pričekajte ... ${Math.round(progress)}%` : 'Generisati'}
+    </button>
         </CardContent>
       </form>
     </Card>
