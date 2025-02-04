@@ -21,20 +21,47 @@ export default function ImagePage() {
   const [loadingnow, updateLoadingStatus] = useState(false); // Renamed setLoading to updateLoadingStatus
   const [progress, setProgress] = useState(0);
 
-  const handleClick = () => {
-    updateLoadingStatus(true); // Use the new name here
-    setProgress(0);
+  // const handleClick = () => {
+  //   updateLoadingStatus(true); // Use the new name here
+  //   setProgress(0);
 
+  //   const interval = setInterval(() => {
+  //     setProgress((prevProgress) => {
+  //       if (prevProgress >= 100) {
+  //         clearInterval(interval);
+  //         updateLoadingStatus(false); // Use the new name here
+  //         return 100;
+  //       }
+  //       return prevProgress + 100 / 25; // Increment progress every second
+  //     });
+  //   }, 1000); // Update every second
+  // };
+
+  const handleClick = async () => {
+    updateLoadingStatus(true);
+    setProgress(0);
+  
+    // Step 1: Check if API limit is reached after starting progress
+    const response = await axios.post('/api/design');
+    
+    if (response.status === 429) {
+      alert("API limit reached. Upgrade your subscription to continue.");
+      setProgress(0); // Reset progress since animation won't start
+      updateLoadingStatus(false);
+      return;
+    }
+  
+    // Step 2: Start progress animation if API limit is not reached
     const interval = setInterval(() => {
       setProgress((prevProgress) => {
         if (prevProgress >= 100) {
           clearInterval(interval);
-          updateLoadingStatus(false); // Use the new name here
+          updateLoadingStatus(false);
           return 100;
         }
-        return prevProgress + 100 / 25; // Increment progress every second
+        return prevProgress + 100 / 20; // Increment progress every second
       });
-    }, 1000); // Update every second
+    }, 1000);
   };
   
   
@@ -141,53 +168,120 @@ export default function ImagePage() {
     }
   };
 
+  // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   setLoading(true);
+  //   if (!prompt || !selectedImage) {
+  //     alert("Please provide both prompt and image");
+  //     return;
+  //   }
+
+  //   try {
+  //     // Step 1: Translate the prompt
+  //     const translatedPrompt = await translatePrompt(prompt);
+  //     console.log("Translated Prompt:", translatedPrompt);
+
+  //     // Step 2: Call API route to check API limit and subscription
+  //     const response = await axios.post('/api/design');
+  //     if (response.status !== 200) {
+  //       alert(response.data.error || "Failed to verify checks");
+  //       return;
+  //     }
+
+  //     const formData = new FormData();
+  //     formData.append("prompt", translatedPrompt);  // Use translated prompt here
+  //     formData.append("image", selectedImage);  // Pass the actual file, not the URL
+
+  //     // Step 3: Generate the image with the translated prompt
+  //     setLoading(true);
+  //     const imageResponse = await axios.post(
+  //      `https://4140-46-122-68-255.ngrok-free.app/generate_design/?prompt=${translatedPrompt}`,
+  //       formData,
+  //       {
+  //         headers: {
+  //           "Content-Type": "multipart/form-data",
+  //           "Authorization": `Bearer ${AUTH_TOKEN}`,  // Add the token to the Authorization header
+  //         },
+  //         responseType: "blob",  // We expect a blob image response
+  //       }
+  //     );
+
+  
+
+  //     // Create a temporary URL for the generated image
+  //     const imageUrl = URL.createObjectURL(imageResponse.data);
+  //     setGeneratedImage(imageUrl);
+  //     setLoading(false);
+  //   } catch (error) {
+  //     console.error("Error generating design:", error);
+  //     setLoading(false);
+  //   }
+  // };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
+  
     if (!prompt || !selectedImage) {
       alert("Please provide both prompt and image");
+      setLoading(false);
       return;
     }
-
+  
     try {
       // Step 1: Translate the prompt
       const translatedPrompt = await translatePrompt(prompt);
       console.log("Translated Prompt:", translatedPrompt);
-
+  
       // Step 2: Call API route to check API limit and subscription
       const response = await axios.post('/api/design');
+  
       if (response.status !== 200) {
-        alert(response.data.error || "Failed to verify checks");
+        if (response.status === 429) {
+          // API limit reached, redirect to settings page
+          window.location.href = "http://localhost:3000/settings";
+        } else {
+          alert(response.data.error || "Failed to verify checks");
+        }
+        setLoading(false);
         return;
       }
-
+  
       const formData = new FormData();
-      formData.append("prompt", translatedPrompt);  // Use translated prompt here
-      formData.append("image", selectedImage);  // Pass the actual file, not the URL
-
+      formData.append("prompt", translatedPrompt);
+      formData.append("image", selectedImage);
+  
       // Step 3: Generate the image with the translated prompt
       setLoading(true);
       const imageResponse = await axios.post(
-       `https://4140-46-122-68-255.ngrok-free.app/generate_design/?prompt=${translatedPrompt}`,
+        `https://4140-46-122-68-255.ngrok-free.app/generate_design/?prompt=${translatedPrompt}`,
         formData,
         {
           headers: {
             "Content-Type": "multipart/form-data",
-            "Authorization": `Bearer ${AUTH_TOKEN}`,  // Add the token to the Authorization header
+            "Authorization": `Bearer ${AUTH_TOKEN}`,
           },
-          responseType: "blob",  // We expect a blob image response
+          responseType: "blob",
         }
       );
-
+  
       // Create a temporary URL for the generated image
       const imageUrl = URL.createObjectURL(imageResponse.data);
       setGeneratedImage(imageUrl);
-      setLoading(false);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error generating design:", error);
+      
+      if (error.response?.status === 429) {
+        // API limit reached, redirect to settings page
+        window.location.href = "http://localhost:3000/settings";
+      } else {
+        alert("Iskoristili ste sve kredite. Nadogradite svoju pretplatu za kontinuiranu upotrebu.");
+      }
+    } finally {
       setLoading(false);
     }
   };
+
 
   // Add this new function to handle example image selection
   const handleExampleImageSelect = async (imageUrl: string, description: string) => {
