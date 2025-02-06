@@ -188,7 +188,7 @@ export default function ImagePage() {
             updateLoadingStatus(false); // Stop loading animation
             return 100;
           }
-          return prevProgress + 100 / 20; // Increment progress every second
+          return prevProgress + 100 / 35; // Increment progress every second
         });
       }, 1000);
   
