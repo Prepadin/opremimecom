@@ -219,7 +219,7 @@ export default function ImagePage() {
         // API limit reached, redirect to settings page
         window.location.href = "http://localhost:3000/settings";
       } else {
-        alert("Porabili ste vse credite. Za nadalno uporabo nadgradite svojo naročnino.");
+        alert("Iskoristili ste sve kredite. Nadogradite svoju pretplatu za kontinuiranu upotrebu.");
       }
     } finally {
       setLoading(false);
