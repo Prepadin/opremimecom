@@ -296,13 +296,13 @@ return (
             <SelectTrigger className="w-full bg-[#0D0B14] border-0 text-white">
               <SelectValue placeholder="Izaberite tip stila" />
             </SelectTrigger>
+            <SelectContent>
             <SelectItem value="bujno zelenilo, prirodno drvo, nameštaj od ratana, živopisni uzorci, meki beli zidovi, umetnička dela sa tropskom tematikom, toplo osvetljenje, prozračne zavese i akcenti od bambusa.">
               Tropsko povlačenje
               </SelectItem>
               <SelectItem value="Nežna plava, peščano-bež, beljeno drvo, prirodne teksture, lagane tkanine, nautički dekor, pletene korpe, vazdušne zavese, akcenti od naplavljenog drveta i puno prirodnog svetla.">
               Primorski mir
               </SelectItem>
-            <SelectContent>
               <SelectItem value="moderan stil, elegantne linije, neutralni tonovi, geometrijski oblici, minimalna dekoracija doma, monohrom, bela, bež, siva, crna, drvo, staklo, metalni akcenti.">
               Moderne
               </SelectItem>
