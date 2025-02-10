@@ -198,7 +198,7 @@ export default function ImagePage() {
       formData.append("image", selectedImage);
   
       const imageResponse = await axios.post(
-        `https://1fe4-46-122-68-255.ngrok-free.app/generate_design/?prompt=${translatedPrompt}`,
+        `https://1e27-46-122-68-255.ngrok-free.app/generate_design/?prompt=${translatedPrompt}`,
         formData,
         {
           headers: {
