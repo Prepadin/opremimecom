@@ -1,6 +1,6 @@
 'use client'
 
-
+import imageCompression from "browser-image-compression";
 import { useState } from "react";
 import axios from "axios";
 import { Button } from "@/components/ui/button"
@@ -228,6 +228,15 @@ export default function ImagePage() {
   //   }
   // };
 
+  const compressImage = async (file: File) => {
+    const options = {
+      maxSizeMB: 1, // Maximum size in MB
+      maxWidthOrHeight: 1024, // Maximum width or height
+      useWebWorker: true, // Use web workers for faster compression
+    };
+    return await imageCompression(file, options);
+  };
+  
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
@@ -244,11 +253,15 @@ export default function ImagePage() {
     }
   
     try {
-      // Step 1: Translate the prompt
+      // Step 1: Compress the selected image
+      const compressedFile = await compressImage(selectedImage);
+      console.log("Compressed Image:", compressedFile);
+  
+      // Step 2: Translate the prompt
       const translatedPrompt = await translatePrompt(prompt);
       console.log("Translated Prompt:", translatedPrompt);
   
-      // Step 2: Call API route to check API limit and subscription
+      // Step 3: Call API route to check API limit and subscription
       const response = await axios.post('/api/design');
   
       if (response.status !== 200) {
@@ -263,7 +276,7 @@ export default function ImagePage() {
         return;
       }
   
-      // Step 3: Start progress animation
+      // Step 4: Start progress animation
       interval = setInterval(() => {
         setProgress((prevProgress) => {
           if (prevProgress >= 100) {
@@ -271,13 +284,13 @@ export default function ImagePage() {
             updateLoadingStatus(false); // Stop loading animation
             return 100;
           }
-          return prevProgress + 100 / 35; // Increment progress every second
+          return prevProgress + 100 / 55; // Increment progress every second
         });
       }, 1000);
   
-      // Step 4: Upload the selected image to Cloudinary
+      // Step 5: Upload the compressed selected image to Cloudinary
       const selectedImageFormData = new FormData();
-      selectedImageFormData.append("file", selectedImage);
+      selectedImageFormData.append("file", compressedFile);
       selectedImageFormData.append("upload_preset", "opremimennow"); // Replace with your upload preset
   
       const selectedImageResponse = await fetch(
@@ -292,10 +305,10 @@ export default function ImagePage() {
       const selectedImageUrl = selectedImageData.secure_url; // URL of the uploaded selected image
       console.log("Selected Image uploaded to Cloudinary:", selectedImageUrl);
   
-      // Step 5: Generate the AI image
+      // Step 6: Generate the AI image
       const formDataForDesign = new FormData();
       formDataForDesign.append("prompt", translatedPrompt);
-      formDataForDesign.append("image", selectedImage);
+      formDataForDesign.append("image", compressedFile); // Use the compressed file for AI generation
   
       const imageResponse = await axios.post(
         `https://7d83-46-122-103-122.ngrok-free.app/generate_design/?prompt=${translatedPrompt}`,
@@ -309,7 +322,7 @@ export default function ImagePage() {
         }
       );
   
-      // Step 6: Upload the AI-generated image to Cloudinary
+      // Step 7: Upload the AI-generated image to Cloudinary
       const aiGeneratedImageBlob = imageResponse.data;
       const aiGeneratedImageFile = new File([aiGeneratedImageBlob], "ai_generated_image.png", {
         type: "image/png",
@@ -331,7 +344,7 @@ export default function ImagePage() {
       const aiGeneratedImageUrl = aiGeneratedImageData.secure_url; // URL of the uploaded AI-generated image
       console.log("AI-generated Image uploaded to Cloudinary:", aiGeneratedImageUrl);
   
-      // Step 7: Set the AI-generated image URL in state
+      // Step 8: Set the AI-generated image URL in state
       setGeneratedImage(aiGeneratedImageUrl);
     } catch (error: any) {
       console.error("Error generating design:", error);
