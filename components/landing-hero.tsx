@@ -18,7 +18,7 @@ export const LandingHero = () => {
       <head>
       <Script
         strategy='lazyOnload'
-        src={`https://www.googletagmanager.com/gtag/js?id=G-7RQ6ZCJCS1`}
+        src={`https://www.googletagmanager.com/gtag/js?id=G-F8580TP23H`}
       />
 
       <Script id='' strategy='lazyOnload'>
@@ -26,7 +26,7 @@ export const LandingHero = () => {
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-7RQ6ZCJCS1', {
+              gtag('config', 'G-F8580TP23H', {
               page_path: window.location.pathname,
               });
           `}
