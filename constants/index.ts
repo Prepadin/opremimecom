@@ -11,7 +11,7 @@ import {
   GalleryVertical,
 } from 'lucide-react'
 
-export const MAX_FREE_COUNTS = 10 as const
+export const MAX_FREE_COUNTS = 5 as const
 
 export const TESTIMONIALS = [
   {
