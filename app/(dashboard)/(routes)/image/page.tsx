@@ -311,7 +311,7 @@ export default function ImagePage() {
       formDataForDesign.append("image", compressedFile); // Use the compressed file for AI generation
   
       const imageResponse = await axios.post(
-        `https://57df-46-122-65-23.ngrok-free.app/generate_design/?prompt=${translatedPrompt}`,
+        `https://a7d4-46-122-65-23.ngrok-free.app/generate_design/?prompt=${translatedPrompt}`,
         formDataForDesign,
         {
           headers: {
